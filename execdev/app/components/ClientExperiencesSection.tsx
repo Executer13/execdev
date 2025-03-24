@@ -16,7 +16,7 @@ const testimonialData = [
     name: "David Miller",
     title: "CEO",
     company: "HealthTech Solutions",
-    quote: "Dawood's approach to our healthcare platform redesign was transformative. He understood our users' needs perfectly and delivered a solution that exceeded our expectations.",
+    quote: "Yasan's approach to our healthcare platform redesign was transformative. He understood our users' needs perfectly and delivered a solution that exceeded our expectations.",
     videoUrl: "#" // Replace with actual video URL
   },
   {

@@ -17,7 +17,7 @@ const testimonialData = [
     name: "Fahad Saleem",
     title: "CEO",
     company: "Navigrated",
-    quote: "Working with Dawood transformed our complex application into something our users genuinely enjoy using — 40% increase in user retention.",
+    quote: "Working with Yasan transformed our complex application into something our users genuinely enjoy using — 40% increase in user retention.",
     avatar: "",
   },
   {
@@ -33,7 +33,7 @@ const testimonialData = [
     name: "Jibran Khalil",
     title: "Founder",
     company: "SILA School",
-    quote: "As a designer, I appreciate developers who care about details. Dawood's implementation was pixel-perfect and improved our original designs.",
+    quote: "As a designer, I appreciate developers who care about details. Yasan's implementation was pixel-perfect and improved our original designs.",
     avatar: "",
   },
   {
@@ -41,7 +41,7 @@ const testimonialData = [
     name: "Mujobie Pierre Paul",
     title: "Founder",
     company: "Travel Hotline | Luxe Canine Stays",
-    quote: "Dawood stands out for his commitment to accessibility. Made our application fully compliant with WCAG without sacrificing aesthetics.",
+    quote: "Yasan stands out for his commitment to accessibility. Made our application fully compliant with WCAG without sacrificing aesthetics.",
     avatar: "",
   },
   {
@@ -57,7 +57,7 @@ const testimonialData = [
     name: "Mabrelle",
     title: "CEO",
     company: "Olaphase SDN",
-    quote: "The product Dawood built for us directly contributed to a 45% increase in conversion rate. Focus on UX and performance made all the difference.",
+    quote: "The product Yasan built for us directly contributed to a 45% increase in conversion rate. Focus on UX and performance made all the difference.",
     avatar: "",
   }
 ];

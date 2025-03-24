@@ -20,116 +20,27 @@ interface IntroProps {
   scrollIconVisible: boolean;
 }
 
-
-
-
-// 3D Animated Image component with modern tile effect
-const AnimatedProfileImage = ({ imageUrl }: { imageUrl: string }) => {
-  const [hovered, setHovered] = useState(false);
-  const randomKey = useRef(Math.random());
-  
+// Simplified Static Profile Image component
+const ProfileImage = ({ imageUrl }: { imageUrl: string }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, rotateY: 25 }}
-      animate={{ 
-        opacity: 1, 
-        rotateY: hovered ? 15 : 0,
-        rotateX: hovered ? -5 : 0
-      }}
-      transition={{ 
-        type: "spring", 
-        stiffness: 300, 
-        damping: 20,
-        duration: 0.5 
-      }}
-      whileHover={{ scale: 1.02 }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      style={{ 
-        width: '100%', 
+    <Box
+      sx={{
+        width: '100%',
         height: '100%',
-        perspective: '1000px'
+        position: 'relative',
+        borderRadius: '10px',
+        overflow: 'hidden',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
       }}
     >
-      <motion.div
-        animate={{ 
-          rotateY: hovered ? [0, 2, 0] : 0
-        }}
-        transition={{ 
-          repeat: hovered ? Infinity : 0, 
-          duration: 3,
-          ease: "easeInOut"
-        }}
-        style={{ 
-          width: '100%', 
-          height: '100%', 
-          position: 'relative'
-        }}
-      >
-        {/* Main image */}
-        <Box
-          sx={{
-            width: '100%',
-            height: '100%',
-            position: 'relative',
-            borderRadius: '10px',
-            overflow: 'hidden',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
-          }}
-        >
-          <Image
-            src={imageUrl}
-            alt="Profile Picture"
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
-          
-          {/* Overlay with modern gradient effect */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              background: 'linear-gradient(45deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 40%, rgba(255,255,255,0.1) 60%, rgba(0,0,0,0.4) 100%)',
-              opacity: hovered ? 0.7 : 0.2,
-              transition: 'opacity 0.5s ease-in-out'
-            }}
-          />
-        </Box>
-        
-        {/* Floating tech dots */}
-        {Array.from({ length: 8 }).map((_, i) => (
-          <motion.div
-            key={`${randomKey.current}-${i}`}
-            initial={{ opacity: 0 }}
-            animate={{ 
-              opacity: hovered ? [0, 0.7, 0] : 0,
-              x: hovered ? (Math.random() - 0.5) * 100 : 0,
-              y: hovered ? (Math.random() - 0.5) * 100 : 0
-            }}
-            transition={{
-              duration: 2 + Math.random() * 2,
-              repeat: Infinity,
-              delay: i * 0.2,
-              repeatType: 'reverse'
-            }}
-            style={{
-              position: 'absolute',
-              width: 4 + Math.random() * 8,
-              height: 4 + Math.random() * 8,
-              borderRadius: '50%',
-              background: `rgba(${155 + Math.random() * 100}, ${155 + Math.random() * 100}, 255, 0.8)`,
-              filter: 'blur(1px)',
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`
-            }}
-          />
-        ))}
-      </motion.div>
-    </motion.div>
+      <Image
+        src={imageUrl}
+        alt="Profile Picture"
+        layout="fill"
+        objectFit="cover"
+        priority
+      />
+    </Box>
   );
 };
 
@@ -390,7 +301,7 @@ const Intro = ({ scrollToProjects, scrollIconVisible }: IntroProps) => {
           </motion.div>
         </Box>
 
-        {/* Right: Profile Image with 3D animation - appears last */}
+        {/* Right: Profile Image without 3D animation */}
         <Box
           ref={profileRef}
           sx={{
@@ -403,27 +314,24 @@ const Intro = ({ scrollToProjects, scrollIconVisible }: IntroProps) => {
             mb: { xs: 4, md: 0 }
           }}
         >
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1.7 }}
+          <Box
             style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'flex-end' }}
           >
             <Box 
               sx={{
                 width: { xs: '380px', md: '480px' },
-                marginRight: { md: 0 }, // Ensure there's no margin on the right on desktop
+                marginRight: { md: 0 },
                 height: { xs: '380px', md: '560px' },
                 position: 'relative',
-                borderRadius: { xs: '10px', md: '10px 0 0 10px' }, // Rounded corners only on left side for desktop
+                borderRadius: { xs: '10px', md: '10px 0 0 10px' },
                 overflow: 'hidden',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
                 backgroundColor: 'transparent'
               }}
             >
-              <AnimatedProfileImage imageUrl="/dp.jpeg" />
+              <ProfileImage imageUrl="/dp.jpeg" />
             </Box>
-          </motion.div>
+          </Box>
         </Box>
         
         {/* Scroll Down Indicator - 10% height */}
