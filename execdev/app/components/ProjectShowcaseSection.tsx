@@ -26,11 +26,11 @@ const PURPLE_COLOR = '#9c27b0';
 
 // Colors from ProductKeysSection for consistency
 const PROJECT_COLORS = [
-  '#4caf50', // Green
+  '#42ad01', // Green
   '#2196f3', // Blue
-  '#ffc107', // Yellow/amber
+  '#039e83', // Yellow/amber
   '#f44336', // Red
-  '#9c27b0', // Purple
+  '#DA70D6', // Purple
 ];
 
 // Types for project data
@@ -52,40 +52,57 @@ interface ProjectData {
 
 // Project data
 const projectsData: ProjectData[] = [
+
+
   {
-    title: "Navigrated - Web App",
-    subtitle: "Student-Expert Bridge Platform",
-    description: "Connecting students with mentors globally for international education guidance and career development.",
+    title: "Scheddio - SaaS Platform",
+    subtitle: "Session Management & Dynamic SaaS System",
+    description: "A comprehensive solution for session management, real-time tracking, and dynamic SaaS systems featuring secure authentication, database integration, and dynamic subdomain provisioning.",
     image: "/scheddio.png",
     stats: [
-      { icon: <PeopleIcon fontSize="large" />, value: "80k+", description: "Pakistani students supported" },
+      { icon: <SchoolIcon fontSize="large" />, value: "100%", description: "Secure authentication" },
+      { icon: <StorageIcon fontSize="large" />, value: "24/7", description: "Real-time tracking" }
+    ],
+    techStack: ["Flutter", "NestJS", "Supabase", "PostgreSQL", "TypeScript"],
+    color: PROJECT_COLORS[4]
+  },
+  {
+    title: "Beep - Mobile App",
+    subtitle: "Flutter Firebase REST API Platform",
+    description: "A comprehensive mobile application built with Flutter, featuring Firebase integration, REST API connectivity, and test payment functionality for seamless user experiences.",
+    image: "/beep.png",
+    stats: [
+      { icon: <PeopleIcon fontSize="large" />, value: "80k+", description: "Active users" },
       { icon: <StorageIcon fontSize="large" />, value: "35%", description: "Increase in post-launch sign-ups" }
     ],
-    techStack: ["React", "Node.js", "MongoDB", "Express"],
+    techStack: ["Flutter", "Firebase", "REST API", "GetX", "Test Payments"],
     color: PROJECT_COLORS[0]
   },
   {
-    title: "EduLink - Mobile App",
-    subtitle: "Interactive Learning Platform",
-    description: "Empowering educators to create engaging learning experiences with interactive content and real-time assessments.",
-    image: "/scheddio.png", // Reusing the same image for demo
+    title: "Punjab Health Care System - Mobile App",
+    subtitle: "Live Video Streaming & Beauty Enhancement Platform",
+    description: "A sophisticated live video streaming platform featuring real-time facial enhancement via FaceUnity's Beauty-Kit, optimized performance across Android devices, and efficient asset management through Google Play Asset Delivery.",
+    image: "/phcs.jpg",
     stats: [
-      { icon: <SchoolIcon fontSize="large" />, value: "45%", description: "Improvement in student engagement" },
-      { icon: <SentimentSatisfiedAltIcon fontSize="large" />, value: "12k+", description: "Active daily users" }
+      { icon: <StorageIcon fontSize="large" />, value: "40%", description: "App size reduction" },
+      { icon: <SentimentSatisfiedAltIcon fontSize="large" />, value: "20%", description: "Performance optimization" }
     ],
-    techStack: ["Flutter", "Firebase", "Chart.js", "Tailwind CSS"],
+    techStack: ["Flutter", "Agora SDK", "FaceUnity", "Node.js", "PostgreSQL"],
     color: PROJECT_COLORS[1]
   },
+ 
+  
+ 
   {
-    title: "GameSync - Web Platform",
-    subtitle: "Game Developer Community",
-    description: "Connecting indie game developers with resources, mentorship, and publishing opportunities to bring creative visions to life.",
-    image: "/scheddio.png", // Reusing the same image for demo
+    title: "Saloon - Mobile App",
+    subtitle: "Live Video Streaming & Beauty Enhancement Platform",
+    description: "A sophisticated live video streaming platform featuring real-time facial enhancement via FaceUnity's Beauty-Kit, optimized performance across Android devices, and efficient asset management through Google Play Asset Delivery.",
+    image: "/saloon.png",
     stats: [
-      { icon: <SportsEsportsIcon fontSize="large" />, value: "150+", description: "Games published through platform" },
-      { icon: <LanguageIcon fontSize="large" />, value: "24%", description: "Monthly community growth" }
+      { icon: <StorageIcon fontSize="large" />, value: "40%", description: "App size reduction" },
+      { icon: <SentimentSatisfiedAltIcon fontSize="large" />, value: "20%", description: "Performance optimization" }
     ],
-    techStack: ["Vue.js", "Django", "PostgreSQL", "AWS"],
+    techStack: ["Flutter", "Agora SDK", "FaceUnity", "Node.js", "PostgreSQL"],
     color: PROJECT_COLORS[2]
   }
 ];
@@ -151,7 +168,7 @@ const ProjectShowcase = ({ project, index }: { project: ProjectData; index: numb
       transition={{ duration: 0.8, delay: 0.1 }}
       style={{ 
       
-        minHeight: '90vh', // Make each project take full viewport height
+        minHeight: '100vh', // Make each project take full viewport height
         display: 'flex',
         alignItems: 'center'
       }}

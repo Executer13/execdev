@@ -7,7 +7,7 @@ import {
   IconButton, 
   Container 
 } from '@mui/material';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -23,24 +23,134 @@ interface IntroProps {
 // Simplified Static Profile Image component
 const ProfileImage = ({ imageUrl }: { imageUrl: string }) => {
   return (
-    <Box
-      sx={{
+    <motion.div
+      initial={{ opacity: 0, x: 30 }}
+      animate={{ 
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.8, ease: [0.6, 0.01, 0.05, 0.95] }
+      }}
+      whileHover={{
+        scale: 1.01,
+        transition: { duration: 0.3 }
+      }}
+      style={{
         width: '100%',
         height: '100%',
         position: 'relative',
-        borderRadius: '10px',
         overflow: 'hidden',
-        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
+        borderRadius: '12px',
       }}
     >
-      <Image
-        src={imageUrl}
-        alt="Profile Picture"
-        layout="fill"
-        objectFit="cover"
-        priority
-      />
-    </Box>
+      {/* Main Image Container */}
+      <motion.div
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          transformOrigin: 'center',
+        }}
+        animate={{
+          y: [0, -15, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <Image
+          src={imageUrl}
+          alt="Profile Picture"
+          layout="fill"
+          objectFit="cover"
+          priority
+          className="unselectable"
+        />
+
+        {/* Dynamic Gradient Overlay */}
+        <motion.div
+          initial={{ opacity: 0.15 }}
+          animate={{ opacity: [0.15, 0.25, 0.15] }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `
+              linear-gradient(
+                45deg,
+                rgba(135, 0, 255, 0.15) 0%,
+                rgba(0, 212, 255, 0.15) 100%
+              )
+            `,
+            mixBlendMode: 'soft-light',
+          }}
+        />
+
+        {/* Subtle Noise Texture */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage: 'url("/noise.png")',
+          opacity: 0.03,
+          mixBlendMode: 'overlay',
+          pointerEvents: 'none'
+        }} />
+      </motion.div>
+
+      {/* Modern Border Animation */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        borderRadius: '12px',
+        border: '1px solid transparent',
+        overflow: 'hidden',
+        pointerEvents: 'none',
+      }}>
+        <motion.div
+          initial={{ scale: 0.98, opacity: 0 }}
+          animate={{ 
+            scale: 1.02, 
+            opacity: 1,
+            transition: {
+              duration: 4,
+              repeat: Infinity,
+              repeatType: 'mirror',
+              ease: "easeInOut"
+            }
+          }}
+          style={{
+            position: 'absolute',
+            top: '-50%',
+            left: '-50%',
+            right: '-50%',
+            bottom: '-50%',
+            background: `
+              conic-gradient(
+                from 230deg at 50% 50%,
+                rgba(255,255,255,0) 0deg,
+                rgba(255,255,255,0.15) 70deg,
+                rgba(255,255,255,0) 160deg
+              )
+            `,
+            mixBlendMode: 'soft-light',
+          }}
+        />
+      </div>
+    </motion.div>
   );
 };
 
@@ -307,31 +417,63 @@ const Intro = ({ scrollToProjects, scrollIconVisible }: IntroProps) => {
           sx={{
             width: { xs: '100%', md: '50%' },
             display: 'flex',
-            justifyContent: { xs: 'center', md: 'flex-end' },
+            justifyContent: { xs: 'flex-end', md: 'flex-end' },
             alignItems: 'flex-start',
             height: { xs: 'auto', md: '100%' },
             mt: { xs: 2, md: 0 },
-            mb: { xs: 4, md: 0 }
+            mb: { xs: 4, md: 0 },
+            perspective: '1000px',
+        
           }}
         >
-          <Box
-            style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'flex-end' }}
+          <motion.div
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              transformStyle: 'preserve-3d',
+              display: 'flex',
+              justifyContent: 'flex-end'
+            }}
+            initial={{ opacity: 0, x: 50, rotateY: 15 }}
+            animate={{ 
+              opacity: 1, 
+              x: 0, 
+              rotateY: 0,
+              transition: { 
+                duration: 0.8, 
+                delay: 0.6,
+                ease: [0.33, 1, 0.68, 1] 
+              }
+            }}
+            whileHover={{
+              rotateY: -2,
+              translateZ: 20,
+              transition: { duration: 0.4 }
+            }}
           >
             <Box 
               sx={{
                 width: { xs: '380px', md: '480px' },
-                marginRight: { md: 0 },
                 height: { xs: '380px', md: '560px' },
                 position: 'relative',
-                borderRadius: { xs: '10px', md: '10px 0 0 10px' },
+                borderRadius: '12px',
                 overflow: 'hidden',
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
-                backgroundColor: 'transparent'
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  inset: 0,
+                  borderRadius: '12px',
+                  padding: '1px',
+                  background: 'transparent',
+                  WebkitMask: 'unset',
+                  mask: 'unset',
+                }
               }}
             >
               <ProfileImage imageUrl="/dp.jpeg" />
             </Box>
-          </Box>
+          </motion.div>
         </Box>
         
         {/* Scroll Down Indicator - 10% height */}
