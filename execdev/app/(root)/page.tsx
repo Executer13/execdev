@@ -1,17 +1,8 @@
 "use client";
-import { useRef, useEffect, useState, forwardRef } from 'react';
+import { useRef, useEffect, useState, } from 'react';
 import React from 'react';
 import {
-  AppBar,
-  Toolbar,
-  Typography,
   Box,
-  Button,
-  Chip,
-  Avatar,
-  Container,
-  useScrollTrigger,
-  IconButton,
   ThemeProvider,
   createTheme,
   CssBaseline
@@ -64,13 +55,7 @@ const theme = createTheme({
   },
 });
 
-const sections = [
-  { title: 'Projects', href: '#projects' },
-  { title: 'Testimonials', href: '#testimonials' },
-  { title: 'Skills', href: '#skills' },
-  { title: 'FAQ', href: '#faq' },
-  { title: 'Contact', href: '#contact' },
-];
+
 
 const FadeInSection = React.forwardRef(({ children, id }: { children: React.ReactNode; id?: string }, ref: React.Ref<HTMLDivElement>) => {
   // Intersection Observer to trigger animation
@@ -113,8 +98,6 @@ const FadeInSection = React.forwardRef(({ children, id }: { children: React.Reac
 FadeInSection.displayName = 'FadeInSection';
 
 export default function HomePage() {
-  // Optional: For MUI AppBar shadow on scroll
-  const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 0 });
   const [scrollIconVisible, setScrollIconVisible] = useState(true);
 
   // Add ref for the sections

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { 
   Typography, 
   Box, 
@@ -7,7 +7,7 @@ import {
   IconButton, 
   Container 
 } from '@mui/material';
-import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useAnimation, useInView, } from 'framer-motion';
 import Image from 'next/image';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';

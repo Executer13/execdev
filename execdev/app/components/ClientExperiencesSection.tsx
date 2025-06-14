@@ -144,7 +144,7 @@ const TestimonialVideo = ({ testimonial, isActive = false }: { testimonial: type
               mb: 2
             }}
           >
-            "{testimonial.quote}"
+            &ldquo;{testimonial.quote}&rdquo;
           </Typography>
           
           <Box 
@@ -173,7 +173,7 @@ const TestimonialVideo = ({ testimonial, isActive = false }: { testimonial: type
 };
 
 const ClientExperiencesSection = () => {
-  const [activeTestimonial, setActiveTestimonial] = React.useState(0);
+  const [activeTestimonial] = React.useState(0);
   
   return (
     <Box sx={{ 

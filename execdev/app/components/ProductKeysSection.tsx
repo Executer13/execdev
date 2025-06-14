@@ -5,7 +5,6 @@ import {
   Box, 
   Container, 
   Card,
-  useTheme
 } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import CheckIcon from '@mui/icons-material/Check';

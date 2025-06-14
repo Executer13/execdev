@@ -4,7 +4,7 @@ import {
   Box, 
   Container, 
   Typography, 
-  Button, 
+
   Grid, 
   IconButton,
   useMediaQuery,
@@ -27,8 +27,7 @@ const navigationItems = [
 
 const Footer = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'));
+
 
   return (
     <Box 
